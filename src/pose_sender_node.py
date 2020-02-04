@@ -40,14 +40,14 @@ class PoseSender(object):
         # TODO: get only needed cov
         # pose_covariance = list(pf_odom.pose.covariance)
         
-        # pose_msg = dict(
-        #     pose = [pf_odom.pose.pose.position.x, pf_odom.pose.pose.position.y, 0.0, yaw, pf_odom.twist.twist.linear.x],
+        pose_msg = dict(
+            pose = [pf_odom.pose.pose.position.x, pf_odom.pose.pose.position.y, 0.0, yaw, pf_odom.twist.twist.linear.x],
         #     pose_covariance = pose_covariance
-        # )
-        # msg_dump = msgpack.dumps(pose_msg)
-        # self.socket.send(msg_dump)
-        pose_arr = np.array([pf_odom.pose.pose.position.x, pf_odom.pose.pose.position.y, yaw, pf_odom.twist.twist.linear.x])
-        send_array(self.socket, np.ascontiguousarray(pose_arr))
+        )
+        msg_dump = msgpack.dumps(pose_msg)
+        self.socket.send(msg_dump)
+        # pose_arr = np.array([pf_odom.pose.pose.position.x, pf_odom.pose.pose.position.y, yaw, pf_odom.twist.twist.linear.x])
+        # send_array(self.socket, np.ascontiguousarray(pose_arr))
 
 if __name__ == "__main__":
     rospy.init_node('pose_sender')
