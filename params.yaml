@@ -1,0 +1,19 @@
+# number of points on a picked trajectory
+num_states: 25
+num_scan_obs: 100
+# drive_topic: '/vesc/high_level/ackermann_cmd_mux/input/nav_1'
+# joy_topic: '/vesc/joy'
+drive_topic: '/nav'
+joy_topic: '/joy'
+picked_traj_topic: '/fzero/picked_traj'
+visualize_trajectory: True
+visualize_trajectory_topic: '/fzero/picked_traj_viz'
+# pf_odom_topic: '/pf/pose/odom'
+pf_odom_topic: '/odom'
+# vesc_odom_topic: '/vesc/odom'
+vesc_odom_topic: '/odom'
+scan_topic: '/scan'
+sensor_obs_pubport: 7777
+self_pose_pubport: 8888
+traj_bridge_subport: 9999
+starting_boost_button: 5
