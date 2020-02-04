@@ -10,6 +10,8 @@ import argparse
 import msgpack
 import zmq
 
+from zmq_array_utils import recv_array, send_array
+
 class TrajBridge(object):
     def __init__(self):
         # get params
@@ -33,10 +35,10 @@ class TrajBridge(object):
             self.num_states = rospy.get_param('num_states')
 
     def pub_traj(self, message):
-        string = self.socket.recv()
-        traj_dict = msgpack.loads(message, encoding='utf-8')
-        traj_arr = traj_dict['trajectory']
-        # traj_arr = list(recv_array(self.socket))
+        # string = self.socket.recv()
+        # traj_dict = msgpack.loads(message, encoding='utf-8')
+        # traj_arr = traj_dict['trajectory']
+        traj_arr = list(recv_array(self.socket))
         msg = Float64MultiArray()
         msg.data = traj_arr
         self.traj_pub.publish(msg)
