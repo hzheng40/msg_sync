@@ -20,7 +20,7 @@ from zmq_array_utils import send_array
 # PF_TOPIC = '/odom'
 
 class PoseSender(object):
-    def __init__(self, pubport):
+    def __init__(self):
         self.pf_topic = rospy.get_param('pf_odom_topic')
         self.pose_pubport = rospy.get_param('self_pose_pubport')
         # zmq stuff
@@ -51,5 +51,5 @@ class PoseSender(object):
 
 if __name__ == "__main__":
     rospy.init_node('pose_sender')
-    sync = PoseSender(PUBPORT)
+    sync = PoseSender()
     rospy.spin()
