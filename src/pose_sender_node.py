@@ -32,7 +32,7 @@ class PoseSender(object):
         self.topic = 'pose'
 
         # messeage filter subs
-        self.pf_odom_sub = rospy.Subscriber(self.pf_odom_topic, Odometry, self.pose_callback, queue_size=1)
+        self.pf_odom_sub = rospy.Subscriber(self.pf_topic, Odometry, self.pose_callback, queue_size=1)
 
     def pose_callback(self, pf_odom):
         # pose can be extracted as x, y, z, theta
